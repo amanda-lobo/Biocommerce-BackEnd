@@ -16,7 +16,7 @@ public class Categoria {
 	private Long id;
 	
 	@NotBlank(message = "O atributo seção é obrigatório, e não pode conter espaços em branco!")
-	@Size(min = 5, max = 50, message = "O atributo seção deve conter no mínimo 05 e no máximo 100 caracteres")
+	@Size(max = 50, message = "O atributo seção deve conter no máximo 50 caracteres")
 	private String secao;
 	
 	@NotBlank(message = "O atributo descrição é obrigatório, e não pode conter espaços em branco!")
