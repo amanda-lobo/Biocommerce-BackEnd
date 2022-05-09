@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.generation.biocommerce.model.Categoria;
+import com.generation.biocommerce.model.Produto;
 import com.generation.biocommerce.repository.ProdutoRepository;
 
 
@@ -41,7 +43,7 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<List <Produto>> getByDescricao (@PathVariable String descricao){
+	public ResponseEntity<List<Categoria>> getByDescricao (@PathVariable String descricao){
 		return ResponseEntity.ok(produtoRepository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 		
