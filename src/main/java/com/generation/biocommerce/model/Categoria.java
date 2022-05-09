@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 @Entity //como se fosse o create table 
 @Table(name = "tb_categoria")//dá nome para a tabela 
-public class BioCommerce {
+public class Categoria {
 	@Id //chave primaria
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//é o auto incremento 
 	private Long id;
