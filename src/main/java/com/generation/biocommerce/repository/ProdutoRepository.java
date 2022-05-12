@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.generation.biocommerce.model.Categoria;
+import com.generation.biocommerce.model.Produto;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
