@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,23 +15,21 @@ import javax.validation.constraints.Size;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotBlank(message = "O atributo nome é obrigatório, e não pode conter espaços em branco :)")
-	@Size(min = 10, max = 50, message = "O atributo nome deve conter no minímo 10 e máximo 50 caracteres")
-	private String nome;
+    @NotNull(message = "O atributo Nome é Obrigatório!")
+    private String nome;
 
-	@NotBlank(message = "O atributo usuario é obrigatório, e não pode conter espaços em branco :)")
-	@Size(min = 10, max = 20, message = "O atributo usuario deve conter no minímo 10 máximo 20 caracteres")
-	private String usuario;
+    @NotNull(message = "O atributo Usuário é Obrigatório!")
+    @Email(message = "O atributo Usuário deve ser um email válido!")
+    private String usuario;
 
-	@NotNull
-	@Size(min = 8, message = "O atributo senha deve conter no mínimo 8 caracteres")
-	private int senha;
+    @NotBlank(message = "O atributo Senha é Obrigatório!")
+    @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
+    private String senha;
 
-	@NotNull
-	private String foto;
+    private String foto;
 
 	public Long getId() {
 		return id;
@@ -56,11 +55,11 @@ public class Usuario {
 		this.usuario = usuario;
 	}
 
-	public int getSenha() {
+	public String getSenha() {
 		return senha;
 	}
 
-	public void setSenha(int senha) {
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
@@ -70,6 +69,7 @@ public class Usuario {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
-	}
-
+	} 
+    
+    
 }
