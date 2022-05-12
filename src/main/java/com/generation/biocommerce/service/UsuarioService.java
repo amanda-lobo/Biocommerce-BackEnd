@@ -3,7 +3,7 @@ package com.generation.biocommerce.service;
 import java.nio.charset.Charset;
 import java.util.Optional;
 
-import org.apache.tomcat.util.codec.binary.Base64;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,9 +19,8 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 	
 	//cadastro de usuario
-	public Optional<Usuario> cadastrarUsuario(Usuario usuario);
-	{
-		if (usuarioRepository.findByUsuario(usuario.getUsuario()).is.Present()) //isPresent -> verifica usuário cadastrado, se estiver, não cadastra
+	public Optional<Usuario> cadastrarUsuario(Usuario usuario)	{
+		if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent()) //isPresent -> verifica usuário cadastrado, se estiver, não cadastra
 			return Optional.empty();
 		
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
@@ -52,10 +51,9 @@ public class UsuarioService {
 			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha()))
 			{
 				usuarioLogin.get().setId(usuario.get().getId());
-				usuarioLogin.get()setNome(usuario.get().getNome());
+				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setFoto(usuario.get().getFoto());
-				usuarioLogin.get();
-				.setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
+				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 				/*se as senhas forem uguais(a senha e a criptografia) atualiza o objeto usuarioLogin com os dados
 				 * recuperados da DB e insere o Token gerado através do método gerarBasicToken, podendo exibir o nome e a foto
@@ -69,9 +67,9 @@ public class UsuarioService {
 	}
 	
 	//criptografar senha
-	private String criptografiarSenha(String senha)
+	private String criptografarSenha(String senha)
 	{
-		BCryptPasswordEncoder encoder = new BcryptPasswordEncoder();
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		return encoder.encode(senha); //encode -> retorna senha criptografada no formato BCrypt
 	}
