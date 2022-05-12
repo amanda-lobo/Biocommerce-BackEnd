@@ -41,7 +41,7 @@ public class UsuarioService {
 		return Optional.empty(); //empity -> retorna uma instancia optional vazia, caso o usuário não seja encontrado
 	}
 	
-	//atenticação do usuario
+	//autenticação do usuario
 	public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin)
 	{
 		Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
@@ -87,7 +87,7 @@ public class UsuarioService {
 	private String gerarBasicToken(String usuario, String senha)
 	{
 		String token = usuario + ":" + senha;
-		byte[] tokenBase64 = Base64.encodeBase64(token.getBytes(Charset.forName("US-ASCIII")));
+		byte[] tokenBase64 = Base64.encodeBase64(token.getBytes(Charset.forName("US-ASCII")));
 		return "Basic " + new String(tokenBase64);
 	}
 }
