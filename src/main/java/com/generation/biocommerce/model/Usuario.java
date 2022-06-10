@@ -29,7 +29,7 @@ public class Usuario {
     @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
     private String senha;
 
-    private String foto;
+    private String tipo;
 
 	public Long getId() {
 		return id;
@@ -63,13 +63,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public String getFoto() {
-		return foto;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setFoto(String foto) {
-		this.foto = foto;
-	} 
-    
-    
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 }
