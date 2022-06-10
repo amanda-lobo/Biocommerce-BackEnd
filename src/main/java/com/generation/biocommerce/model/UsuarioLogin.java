@@ -10,9 +10,9 @@ public class UsuarioLogin {
 	
 	private String senha;
 	
-	private String token;
+	private String tipo;
 	
-    private String tipo;
+	private String token;
 
 	public Long getId() {
 		return id;
@@ -20,14 +20,6 @@ public class UsuarioLogin {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 
 	public String getNome() {
@@ -52,6 +44,14 @@ public class UsuarioLogin {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getToken() {
